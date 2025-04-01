@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="QmsCallPad.MainPage" >
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Black"/>
+            <Label
+                x:Name="dispLay"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center"
+			   Text=""
+			   FontSize="100"
+			   BackgroundColor="Black"
+			   TextColor="Red"
+			   FontFamily="LedDisp"
+			   Grid.ColumnSpan="3" />
+            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="#c1c1c1" Margin="-10"/>
+            <Button
+                x:Name="btnBack"
+                Clicked="btnBack_Clicked"
+                Grid.Row="2"
+			   Grid.Column="0"
+				BackgroundColor="Red"
+			   HeightRequest="70"
+			   WidthRequest="70"  
+			   CornerRadius="35"
+			   Text="BACK"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+				Offset="1,1"
+				Radius="1"
+				Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Label Grid.Row="2"
+			   Grid.Column="1"
+			   TextColor="Black" 
+			   Margin="10"
+			   FontSize="20"
+			   Text="QMS"
+			   FontFamily="LedDisp"
+			   VerticalTextAlignment="Center"
+			   HorizontalTextAlignment="Center"/>
+            <Button 
+                x:Name="btnNext"
+                Clicked="btnNext_Clicked"
+                Grid.Row="2"
+			   Grid.Column="2"
+			   HeightRequest="70"
+			   WidthRequest="70"  
+			   CornerRadius="35"
+			   Text="NEXT"
+			   BackgroundColor="#005c8b"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+				Offset="1,1"
+				Radius="1"
+				Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button
+                x:Name="btnOne"
+                Clicked="numberBtn_Clicked"
+                Grid.Row="4"
+			    Grid.Column="0"
+                FontSize="Medium"
+			    HeightRequest="60"
+			    WidthRequest="80"  
+			    CornerRadius="40"
+			    TextColor="Black"
+			    FontAttributes="Bold"
+			    FontFamily="LedDisp"
+			    Text="1"
+			    BackgroundColor="Wheat"
+			    HorizontalOptions="Center"
+			    VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+					Offset="1,1"
+					Radius="1"
+					Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button
+                x:Name="Two"
+                Clicked="numberBtn_Clicked"
+              Grid.Row="4"
+			  Grid.Column="1"
+			  FontSize="Medium"
+                HeightRequest="60"
+                WidthRequest="80"  
+                CornerRadius="40"
+			  TextColor="Black"
+			  FontAttributes="Bold"
+			  FontFamily="LedDisp"
+			  Text="2"
+			  BackgroundColor="Wheat"
+			  HorizontalOptions="Center"
+			  VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+					Offset="1,1"
+					Radius="1"
+					Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Grid.Row="4"
+                    x:Name="BtnThree"
+                    Clicked="numberBtn_Clicked"
+  Grid.Column="2"
+  FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+  TextColor="Black"
+  FontAttributes="Bold"
+  FontFamily="LedDisp"
+  Text="3"
+  BackgroundColor="Wheat"
+  HorizontalOptions="Center"
+  VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+		Offset="1,1"
+		Radius="1"
+		Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button
+                x:Name="btnFour" Grid.Row="5" Clicked="numberBtn_Clicked"
+  Grid.Column="0"
+  FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+  TextColor="Black"
+  FontAttributes="Bold"
+  FontFamily="LedDisp"
+  Text="4"
+  BackgroundColor="Wheat"
+  HorizontalOptions="Center"
+  VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+		Offset="1,1"
+		Radius="1"
+		Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Grid.Row="5"
+                    x:Name="btnFive"
+                    Clicked="numberBtn_Clicked"
+Grid.Column="1"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="5"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button
+                x:Name="btnSix"
+                Clicked="numberBtn_Clicked"
+                Grid.Row="5"
+Grid.Column="2"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="6"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button
+                x:Name="btnSeven"
+                Clicked="numberBtn_Clicked"
+                Grid.Row="6"
+Grid.Column="0"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="7"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button
+                x:Name="btnEight"
+                Clicked="numberBtn_Clicked"
+                Grid.Row="6"
+Grid.Column="1"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="8"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Grid.Row="6"
+                    x:Name="btnNine"
+                    Clicked="numberBtn_Clicked"
+Grid.Column="2"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="9"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button
+                x:Name="btnZero"
+                Clicked="numberBtn_Clicked"
+                Grid.Row="7"
+Grid.Column="0"
+FontSize="Medium"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+TextColor="Black"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="0"
+BackgroundColor="Wheat"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button 
+                x:Name="btnCall"
+                Clicked="btnClear_Clicked"
+                Grid.Row="7"
+Grid.Column="1"
+FontSize="10"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+                    Grid.ColumnSpan="1"
+TextColor="White"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="Clear"
+BackgroundColor="Gray"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+            <Button 
+                x:Name="btnClear"
+                Clicked="btnCall_Clicked"
+                Grid.Row="7"
+Grid.Column="2"
+FontSize="15"
+HeightRequest="60"
+WidthRequest="80"  
+CornerRadius="40"
+                    Grid.ColumnSpan="2"
+TextColor="White"
+FontAttributes="Bold"
+FontFamily="LedDisp"
+Text="Call"
+BackgroundColor="Teal"
+HorizontalOptions="Center"
+VerticalOptions="Center">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+Offset="1,1"
+Radius="1"
+Opacity="1" />
+                </Button.Shadow>
+            </Button>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
