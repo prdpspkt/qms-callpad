@@ -5,10 +5,10 @@
     <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="300" />
+                <RowDefinition Height="200" />
                 <RowDefinition Height="5" />
                 <RowDefinition Height="70" />
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="5"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -38,8 +38,7 @@
 			   Grid.Column="0"
 				BackgroundColor="Red"
 			   HeightRequest="70"
-			   WidthRequest="70"  
-			   CornerRadius="35"
+			   CornerRadius="10"
 			   Text="BACK"
 			   HorizontalOptions="Center"
 			   VerticalOptions="Center">
@@ -52,21 +51,21 @@
             </Button>
             <Label Grid.Row="2"
 			   Grid.Column="1"
-			   TextColor="Black" 
-			   Margin="10"
+			   TextColor="Black"
 			   FontSize="20"
 			   Text="QMS"
+               WidthRequest="50"                   
 			   FontFamily="LedDisp"
 			   VerticalTextAlignment="Center"
 			   HorizontalTextAlignment="Center"/>
+
             <Button 
                 x:Name="btnNext"
                 Clicked="btnNext_Clicked"
                 Grid.Row="2"
 			   Grid.Column="2"
-			   HeightRequest="70"
-			   WidthRequest="70"  
-			   CornerRadius="35"
+			   HeightRequest="70"			   
+			   CornerRadius="10"
 			   Text="NEXT"
 			   BackgroundColor="#005c8b"
 			   HorizontalOptions="Center"

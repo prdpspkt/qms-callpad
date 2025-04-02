@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="QmsCallPad.SettingPage" >
+    <ScrollView>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalTextAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="0">Terminal Name</Label>
+            <Entry HeightRequest="20" Grid.Row="0" Grid.Column="1" x:Name="Name"/>
+            <Label VerticalTextAlignment="Center" FontSize="20" Grid.Row="1" Grid.Column="0">Alphabet</Label>
+            <Entry HeightRequest="20" Grid.Row="1" Grid.Column="1" x:Name="Alphabet"/>
+            <Label VerticalTextAlignment="Center" FontSize="20" Grid.Row="2" Grid.Column="0">IP Address</Label>
+            <Entry HeightRequest="20" Grid.Row="2" Grid.Column="1" x:Name="IpAddress"/>
+            <Label VerticalTextAlignment="Center" FontSize="20" Grid.Row="3" Grid.Column="0">Speaking Text</Label>
+            <Entry Text="Token number {letter}{number}. Please proceed to the {name} counter." HeightRequest="20" Grid.Row="3" Grid.Column="1" x:Name="speakText"/>
+            <Button Grid.Row="4" Grid.Column="2" x:Name="saveBtn" Clicked="saveBtn_Clicked"  HeightRequest="40" Text="Save"/>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

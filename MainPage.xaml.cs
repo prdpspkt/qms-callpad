@@ -1,16 +1,33 @@
-﻿namespace QmsCallPad
+﻿using CommunityToolkit.Maui.Alerts;
+using QmsCallPad.Database;
+
+namespace QmsCallPad
 {
     public partial class MainPage : ContentPage
     {
-
         String displayText = "0";
         int count = 0;
         private CancellationTokenSource? _cancellationTokenSource;
+        private DatabaseHelper helper;
+        private string terminalName = "New Terminal";
+        private string terminalAlphabet = "Z";
+        private string speakText = "Token number {letter}{number}. Please proceed to the {name} counter";
+
 
         public MainPage()
         {
             InitializeComponent();
             dispLay.Text = displayText;
+            helper = new DatabaseHelper();
+            var setting = helper.FirstRecord();
+            if (helper.FirstRecord() != null)
+            {
+                this.terminalAlphabet = setting.TokenStartLetter;
+                this.terminalName = setting.TerminalName;
+                this.speakText = setting.SpeakText;
+                Toast.Make(setting.SpeakText).Show();
+            }
+
         }
 
         private void numberBtn_Clicked(object sender, EventArgs e)
@@ -32,7 +49,7 @@
 
         private async void btnCall_Clicked(object sender, EventArgs e)
         {
-            this.SpeakNow(dispLay.Text);
+            this.SpeakNow();
         }
 
         private void btnBack_Clicked(object sender, EventArgs e)
@@ -41,7 +58,7 @@
             {
                 count--;
                 dispLay.Text = count.ToString();
-                this.SpeakNow(dispLay.Text);
+                this.SpeakNow();
             }
 
         }
@@ -52,7 +69,7 @@
             {
                 count++;
                 dispLay.Text = count.ToString();
-                this.SpeakNow(dispLay.Text);
+                this.SpeakNow();
             }
         }
 
@@ -63,21 +80,27 @@
             count = 0;
         }
 
-        private async void SpeakNow(String text)
+        private async void SpeakNow()
         {
             _cancellationTokenSource?.Cancel();
             _cancellationTokenSource = new CancellationTokenSource();
             var token = _cancellationTokenSource.Token;
+            string tokenNumber = dispLay.Text;
+            string speakit = this.speakText
+                .Replace("{number}", tokenNumber)
+                .Replace("{letter}", this.terminalAlphabet)
+                .Replace("{name}", this.terminalName);
+
+            await Toast.Make(speakit).Show();
 
             // Start speaking the text
             try
             {
-                await TextToSpeech.SpeakAsync(dispLay.Text, cancelToken: token);
+                await TextToSpeech.SpeakAsync(speakit);
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException ex)
             {
-                // Handle the cancellation if the task was canceled
-                Console.WriteLine("Speech was canceled.");
+                await Toast.Make(ex.Message).Show();
 
             }
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace QmsCallPad
 {
@@ -12,7 +13,7 @@ namespace QmsCallPad
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("led-disp.ttf", "LedDisp");
-                });
+                }).UseMauiCommunityToolkit();
 
 #if DEBUG
             builder.Logging.AddDebug();
