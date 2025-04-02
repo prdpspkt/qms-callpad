@@ -11,6 +11,7 @@ namespace QmsCallPad
         private DatabaseHelper helper;
         private string terminalName = "New Terminal";
         private string terminalAlphabet = "Z";
+        private string ipAddress = "192.168.4.1";
         private string speakText = "Token number {letter}{number}. Please proceed to the {name} counter";
 
 
@@ -25,7 +26,8 @@ namespace QmsCallPad
                 this.terminalAlphabet = setting.TokenStartLetter;
                 this.terminalName = setting.TerminalName;
                 this.speakText = setting.SpeakText;
-                Toast.Make(setting.SpeakText).Show();
+                this.ipAddress = setting.IpAddress;
+
             }
 
         }
@@ -49,27 +51,27 @@ namespace QmsCallPad
 
         private async void btnCall_Clicked(object sender, EventArgs e)
         {
-            this.SpeakNow();
+            await this.SpeakNow();
         }
 
-        private void btnBack_Clicked(object sender, EventArgs e)
+        private async void btnBack_Clicked(object sender, EventArgs e)
         {
             if (count > 1)
             {
                 count--;
                 dispLay.Text = count.ToString();
-                this.SpeakNow();
+                await this.SpeakNow();
             }
 
         }
 
-        private void btnNext_Clicked(object sender, EventArgs e)
+        private async void btnNext_Clicked(object sender, EventArgs e)
         {
             if (count < 999)
             {
                 count++;
                 dispLay.Text = count.ToString();
-                this.SpeakNow();
+                await this.SpeakNow();
             }
         }
 
@@ -80,8 +82,9 @@ namespace QmsCallPad
             count = 0;
         }
 
-        private async void SpeakNow()
+        private async Task SpeakNow()
         {
+            await this.SendText();
             _cancellationTokenSource?.Cancel();
             _cancellationTokenSource = new CancellationTokenSource();
             var token = _cancellationTokenSource.Token;
@@ -90,13 +93,10 @@ namespace QmsCallPad
                 .Replace("{number}", tokenNumber)
                 .Replace("{letter}", this.terminalAlphabet)
                 .Replace("{name}", this.terminalName);
-
-            await Toast.Make(speakit).Show();
-
             // Start speaking the text
             try
             {
-                await TextToSpeech.SpeakAsync(speakit);
+                await TextToSpeech.SpeakAsync(speakit, token);
             }
             catch (OperationCanceledException ex)
             {
@@ -104,6 +104,32 @@ namespace QmsCallPad
 
             }
         }
-    }
+        private async Task SendText()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // The URL of your API endpoint
+                    var url = "http://" + this.ipAddress + "/text";
 
+
+                    var formData = new Dictionary<string, string>
+                    {
+                        {"text", this.terminalAlphabet + count.ToString() },
+                    };
+                    var content = new FormUrlEncodedContent(formData);
+
+                    // Send the POST request
+                    var response = await client.PostAsync(url, content);
+                }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that occur
+                    await DisplayAlert("Exception", "Error: " + ex.Message, "OK");
+                }
+            }
+        }
+
+    }
 }
